@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vacation Rental</title>
+
+        <!-- Boostrap Css1 Js1  -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <!-- fontawesome css1  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+            integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <!-- light slider css1 js1  -->
+        <link type="text/css" rel="stylesheet" href="./assets/libs/lightslider-master/dist/css/lightslider.min.css" />
+        <!-- flatpickr css1 js1  -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+        <!-- custom css  -->
+        <link href="./css/style.css" rel="stylesheet" type="text/css" />
+
+    </head>
+    <body class="bg-light">
+        <!-- Start scroll progress  -->
+        <a href="#">
+            <div id="progresses">
+                <span id="progressvalues">0%</span>
+            </div>
+        </a>
+        <!-- End scroll progress  -->
+        <!-- Start Modal area  -->
+        <div class="modal fade" id="modalbox">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLabel">Book Your Apartment</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="">
+                            <div class="row">
+                                <div class="form-group mb-3">
+                                    <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Full Name"
+                                        autocomplete="off" />
+                                </div>
+                        
+                                <div class="col-6 form-group mb-3">
+                                    <input type="date" name="checkin" id="checkin" class="form-control" placeholder="Check-In" />
+                                </div>
+                        
+                                <div class="col-6 form-group mb-3">
+                                    <input type="date" name="checkout" id="checkout" class="form-control" placeholder="Check-Out" />
+                                </div>
+                        
+                                <div class="col-6 form-group mb-3">
+                                    <select name="adult" class="form-select form-select-md">
+                                        <option selected disabled>Adults</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                    </select>
+                                </div>
+                        
+                                <div class="col-6 form-group mb-3">
+                                    <select name="adult" class="form-select form-select-md">
+                                        <option selected disabled>Children</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                    </select>
+                                </div>
+                        
+                                <div class="col-6 form-group mb-3">
+                                    <input type="text" name="phone" id="phone" class="form-control" placeholder="Phone Number"
+                                        autocomplete="off" />
+                                </div>
+                        
+                                <div class="col-6 form-group mb-3">
+                                    <input type="text" name="time" id="time" class="form-control" placeholder="Time" autocomplete="off" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger px-3" data-bs-dismiss="modal">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal area  -->
+
+        <!-- Start Header Section  -->
+        <header class="container-fluid">
+                <!-- Start contact bar  -->
+                <div class="row justify-content-around contact-bars">
+                    <div class="col-8">
+                        <small class="ms-1 my-0">
+                            <span class="text-secondary">Phone no: </span><a href="#" class="text-light text-decoration-none">+00 1234 567</a> or
+                            <span class="text-secondary">email us: </span><a href="#" class="text-light text-decoration-none">emailsample@email.com</a>
+                        </small>
+                    </div>
+                    <div class="col-4">
+                        <ul class=" list-inline text-end mx-5">
+                            <li class="list-inline-item"><a href="#" class="list-inline-link text-white"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="list-inline-link text-white mx-2"><i class="fa-brands fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="list-inline-link text-white"><i class="fa-brands fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End contact bar  -->
+
+                <!-- Start navbar -->
+                <nav class="navbar navbar-expand-xl border bg-light rounded-4 sticky-top">
+                    <a href="index.html" class="navbar-brand fw-bold fs-2 mx-4">Vacation<span class="head-titles">Rental</span></a>
+
+                    <button type="button" class="navbar-toggler border border-info shadow-sm me-3" data-bs-toggle="collapse" data-bs-target="#nav">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                    <div id="nav" class="navbar-collapse collapse justify-content-end text-uppercase mx-3">
+                        <ol class="navbar-nav">
+                            <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                            <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                            <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                            <li class="nav-item"><a href="#apartmentroom" class="nav-link">Apartment Room</a></li>
+                            <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
+                            <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                        </ol>
+                    </div>
+                </nav>                
+                <!-- End navbar  -->
+                <div class="d-flex justify-content-center">
+                    <div class="btn btn-outline-danger w-50 text-uppercase fs-3 mt-3 shadow-lg" data-bs-toggle="modal" data-bs-target="#modalbox"> Book Appartment Now</div>
+                </div>
+                <!-- Start banner  -->
+                <div class="col-lg-8 col-md-12 mx-5 mx-sm-2 banners">
+                     <p class="text-danger mb-0 fs-2">Welcome to Vacation Rental</p>
+                     <h2 class="text-danger rents">Rent an appartment for your vacation</h2>
+                     <div>
+                        <a class="btn btn-danger px-5 py-3 m-5 m-sm-2">Learn More</a>
+                        <a class="btn btn-info px-5 py-3">Contact Us</a>
+                     </div>
+                </div>
+                <!-- End banner  -->
+            
+        </header>
+        <!-- End Header Section  -->
+
+        <!-- Start About Section  -->
+        <section id="about">
+            <div class="container-fluid">
+                <div id="abouts" class="row">
+                    <div class="col-lg-4 col-md-12">
+                        <div class="card text-center border border-info shadow mx-5 my-3 rounded-5">
+                            <img src="https://roohome.com/wp-content/uploads/2021/09/Strategies-to-Create-a-Stunning-Pool-Area-1280x720.png" class="m-3 shadow-lg rounded-2 " alt="b-garden" />
+                            <div class="card-body">
+                                <h3 class="card-title display-5 pb-3">Map Direction</h3>
+                                <p class="fs-4 fw-light lh-sm">Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                                <button class="btn btn-danger btn-lg my-2">Read More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12">
+                        <div class="card text-center border border-info shadow mx-5 my-3 rounded-5">
+                            <img src="https://media.houseandgarden.co.uk/photos/6189381ceef9bf701c65f034/16:9/w_1280,c_limit/HG-BenPentreath-01-house-16aug16-Sharyn-Cairns_b.jpg"
+                                class="m-3 shadow-lg rounded-2 " alt="livingroom" />
+                            <div class="card-body">
+                                <h3 class="card-title display-6 pb-3">Accomodation Services</h3>
+                                <p class="fs-4 fw-light lh-sm">Even the all-powerful Pointing has no control about the blind texts it is an
+                                    almost unorthographic.</p>
+                                <button class="btn btn-danger btn-lg my-2">Read More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12">
+                        <div class="card text-center border border-info shadow mx-5 my-3 rounded-5">
+                            <img src="https://raisingchildren.net.au/__data/assets/image/0019/48304/Positive-family-relationships.jpg"
+                                class="m-3 shadow-lg rounded-2 " alt="family" />
+                            <div class="card-body">
+                                <h3 class="card-title display-5 pb-3">Great Experience</h3>
+                                <p class="fs-4 fw-light lh-sm">Even the all-powerful Pointing has no control about the blind texts it is an
+                                    almost unorthographic.</p>
+                                <button class="btn btn-danger btn-lg my-2">Read More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End About Section  -->
+
+        <!-- Start Services Section  -->
+        <section id="services">
+            <div class="container-fluid my-5">
+                <div class="row my-3">
+                    <div class="col-lg-8 col-md-12 text-center">
+                        <h3 class="display-4 ms-3">What We Offer</h3>
+                        <p class=" text-center p-5 fs-4">A small river named Duden flows by their place and supplies it with the
+                            necessary regelialia. It is a paradisematic
+                            country, in which roasted parts of sentences fly into your mouth.</p>
+                
+                        <div class="row">
+                            <div class="col-lg-6 d-flex align-items-center text-start p-5">
+                                <img src="./image/service/coffee.png" width="130px" class="border border-danger p-3 rounded-circle" />
+                                <div class="ms-2">
+                                    <h4>Tea Coffee</h4>
+                                    <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+                                </div>
+                            </div>
+                
+                            <div class="col-lg-6 d-flex align-items-center text-start p-5">
+                                <img src="./image/service/bathtub.png" width="130px" class="border border-danger p-3 rounded-circle" />
+                                <div class="ms-2">
+                                    <h4>Hot Shower</h4>
+                                    <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center text-start p-5">
+                                <img src="./image/service/laundry-machine.png" width="130px"
+                                    class="border border-danger p-3 rounded-circle" />
+                                <div class="ms-2">
+                                    <h4>Laundry</h4>
+                                    <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center text-start p-5">
+                                <img src="./image/service/kitchen-table.png" width="130px"
+                                    class="border border-danger p-3 rounded-circle" />
+                                <div class="ms-2">
+                                    <h4>Kitchen</h4>
+                                    <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center text-start p-5">
+                                <img src="./image/service/free-wifi.png" width="130px"
+                                    class="border border-danger p-3 rounded-circle" />
+                                <div class="ms-2">
+                                    <h4>wifi</h4>
+                                    <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center text-start p-5">
+                                <img src="./image/service/ironing.png" width="130px" class="border border-danger p-3 rounded-circle" />
+                                <div class="ms-2">
+                                    <h4>Ironing</h4>
+                                    <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center text-start p-5">
+                                <img src="./image/service/air-conditioning.png" width="130px"
+                                    class="border border-danger p-3 rounded-circle" />
+                                <div class="ms-2">
+                                    <h4>Air Conditioning</h4>
+                                    <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center text-start p-5">
+                                <img src="./image/service/safe.png" width="130px" class="border border-danger p-3 rounded-circle" />
+                                <div class="ms-2">
+                                    <h4>Locker</h4>
+                                    <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="col-lg-4 col-md-12 row justify-content-center ">
+                        <img src="https://thegirlintheyellowdress.com/wp-content/uploads/2018/12/Photo-Dec-20-5-28-35-PM.jpg"
+                            width="70%" height="70%" alt="familyportrait" />
+                        <h3 class="h2 text-center">The most recommended vacation rental</h3>
+                        <p class="w-75">A small river named Duden flows by their place and supplies it with the necessary regelialia. It
+                            is
+                            a paradisematic
+                            country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no
+                            control
+                            about
+                            the blind texts it is an almost unorthographic life One day however a small line of blind text by the name
+                            of
+                            Lorem
+                            Ipsum decided to leave for the far World of Grammar.</p>
+                    </div>
+                </div>
+            </div>
+        </section> 
+        <!-- End Services Section  -->
+
+        <!-- Start Apartment Room Section  -->
+        <section id="apartmentroom">
+            <div class="container-fluid text-center my-5">
+                <h3 class="display-2">Apartment Room</h3>
+                <div class="row">
+                   <div class="col-lg-6 col-sm-12">
+                        <div class="d-flex aparts m-1">
+                            <img src="data:image/jpeg;base64,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" class="col-6" alt="suite room" />
+                            <div class=" card infos">
+                               <div class="d-flex flex-column info-texts">
+                                    <ul class=" list-inline mt-4">
+                                        <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                        <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                        <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                        <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                        <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                    </ul>
+                                    
+                                    <h3 class="card-title display-4">Suite Room</h3>
+                                    <label>Max: <span class="text-secondary">3 people</span></label>
+                                    <label>Size: <span class="text-secondary">45 m<sup>2</sup></span></label>
+                                    <label>View: <span class="text-secondary">Sea View</span></label>
+                                    <label>Bed: <span class="text-secondary">1</span></label>
+                               </div>
+
+                                <button class="btn btn-light btn-lg border border-dark w-50 align-self-center my-3 ">View Room Detail</button>
+                            </div>
+                        </div>
+                   </div>
+
+                <div class="col-lg-6 col-sm-12">
+                    <div class="d-flex aparts m-1">
+                        <img src="https://www.eliaermouhotel.com/uploads/photos/D1024/2019/02/standardroom_1878.jpg"
+                            class="col-6" alt="standard room" />
+                        <div class=" card infos">
+                            <div class="d-flex flex-column info-texts">
+                                <ul class=" list-inline mt-4">
+                                    <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                </ul>
+                
+                                <h3 class="card-title display-4">Standard Room</h3>
+                                <label>Max: <span class="text-secondary">3 people</span></label>
+                                <label>Size: <span class="text-secondary">45 m<sup>2</sup></span></label>
+                                <label>View: <span class="text-secondary">Sea View</span></label>
+                                <label>Bed: <span class="text-secondary">1</span></label>
+                            </div>
+                
+                            <button class="btn btn-light btn-lg border border-dark w-50 align-self-center my-3 ">View Room
+                                Detail</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-sm-12">
+                    <div class="d-flex aparts m-1">
+                        <img src="https://www.thebrehon.com/files/hotel/hotel-a/02-rooms/The_Brehon_Hotel_Family_Suite_-_205_a.jpg?h=600&w=1000"
+                            class="col-6" alt="family room" />
+                        <div class=" card infos">
+                            <div class="d-flex flex-column info-texts">
+                                <ul class=" list-inline mt-4">
+                                    <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                </ul>
+                
+                                <h3 class="card-title display-4">Family Room</h3>
+                                <label>Max: <span class="text-secondary">5 people</span></label>
+                                <label>Size: <span class="text-secondary">70 m<sup>2</sup></span></label>
+                                <label>View: <span class="text-secondary">Sea View</span></label>
+                                <label>Bed: <span class="text-secondary">3</span></label>
+                            </div>
+                
+                            <button class="btn btn-light btn-lg border border-dark w-50 align-self-center my-3 ">View Room
+                                Detail</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-sm-12">
+                    <div class="d-flex aparts m-1">
+                        <img src="https://www.marinabaysands.com/content/dam/singapore/marinabaysands/master/main/home/hotel/rooms-suites/deluxe-room/deluxe-1_1920x960.jpg"
+                            class="col-6" alt="deluxe room" />
+                        <div class=" card infos">
+                            <div class="d-flex flex-column info-texts">
+                                <ul class=" list-inline mt-4">
+                                    <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fas fa-star"></i></li>
+                                </ul>
+                
+                                <h3 class="card-title display-4">Deluxe Room</h3>
+                                <label>Max: <span class="text-secondary">3 people</span></label>
+                                <label>Size: <span class="text-secondary">60 m<sup>2</sup></span></label>
+                                <label>View: <span class="text-secondary">Sea View</span></label>
+                                <label>Bed: <span class="text-secondary">1</span></label>
+                            </div>
+                
+                            <button class="btn btn-light btn-lg border border-dark w-50 align-self-center my-3 ">View Room
+                                Detail</button>
+                        </div>
+                    </div>
+                </div>
+
+                
+                </div>
+            </div>
+        </section>
+        <!-- End Apartment Room Section  -->
+
+        <!-- Start Feedback Section  -->
+        <section class="mt-5">
+            <div class="container my-5">
+                <div class="row text-center">
+                    <h3 class="display-3">Happy Client & Feedbacks</h3>
+                </div>
+
+                <div id="lightSlider">
+                    <div class="item mx-4">
+                        <div class=" d-flex align-items-center " style="width:500px; height:300px">
+                            <div class="row align-items-center border border-muted shadow">
+                                <div class="col-4">
+                                    <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?cs=srgb&dl=pexels-italo-melo-2379005.jpg&fm=jpg"
+                                        class="rounded-circle" width="150px" height="200px" alt="customer1" />
+                                </div>
+                                <div class="col-8">
+                                    <i class="fas fa-angle-double-left talks"></i>
+                                    <p class="text-muted lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis
+                                        officiis
+                                        facere nulla animi molestiae ea.</p>
+                                    <h3 class="mt-2">Mr. Ken Bosh</h3>
+                                    <small class="text-muted mb-5">Businessman</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item mx-4">
+                        <div class=" d-flex align-items-center" style="width:500px; height:300px">
+                            <div class="row align-items-center border border-muted shadow ">
+                                <div class="col-4">
+                                    <img src="https://www.wfp.org/sites/default/files/styles/media_embed/public/2021-10/MicrosoftTeams-image%20%281%29.jpg?itok=ChAaIRLt"
+                                        class="rounded-circle" width="150px" height="200px" alt="customer2" />
+                                </div>
+                                <div class="col-8">
+                                    <i class="fas fa-angle-double-left talks"></i>
+                                    <p class="text-muted lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis
+                                        officiis
+                                        facere nulla animi molestiae ea.</p>
+                                    <h3 class="mt-2">Mrs. Ken Drew</h3>
+                                    <small class="text-muted mb-5">Businesswoman</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item mx-4">
+                        <div class=" d-flex align-items-center" style="width:500px; height:300px">
+                            <div class="row align-items-center border border-muted shadow">
+                                <div class="col-4">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUIoCa_FgBavs2qH2q5QSWhUdbWoUIhRtvng&usqp=CAU"
+                                        class="rounded-circle" width="150px" height="200px" alt="customer3" />
+                                </div>
+                                <div class="col-8">
+                                    <i class="fas fa-angle-double-left talks"></i>
+                                    <p class="text-muted lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis
+                                        officiis
+                                        facere nulla animi molestiae ea.</p>
+                                    <h3 class="mt-2">Mr.W Smith</h3>
+                                    <small class="text-muted mb-5">Businessman</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item mx-4">
+                        <div class=" d-flex align-items-center" style="width:500px; height:300px">
+                            <div class="row align-items-center border border-muted shadow">
+                                <div class="col-4">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5shsLgLOADNU2dKs1yWp0LGqMHTSXsjsGCtS-A-t_GAgDQzm6TINQml-f7oAIWVZtoyQ&usqp=CAU"
+                                        class="rounded-circle" width="150px" height="200px" alt="customer4" />
+                                </div>
+                                <div class="col-8">
+                                    <i class="fas fa-angle-double-left talks"></i>
+                                    <p class="text-muted lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis
+                                        officiis
+                                        facere nulla animi molestiae ea.</p>
+                                    <h3 class="mt-2">Mr. Sewt Bosh</h3>
+                                    <small class="text-muted mb-5">Businessman</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item mx-4">
+                        <div class=" d-flex align-items-center" style="width:500px; height:300px">
+                            <div class="row align-items-center border border-muted shadow">
+                                <div class="col-4">
+                                    <img src="https://media.istockphoto.com/photos/portrait-of-smiling-businessman-holding-tablet-and-making-ok-sign-picture-id1051202402?k=20&m=1051202402&s=170667a&w=0&h=phMCVzQPPHNRes4Jrqzi96JhJzl9Dw7KQ1siQz4p9Os="
+                                        class="rounded-circle" width="150px" height="200px" alt="customer5" />
+                                </div>
+                                <div class="col-8">
+                                    <i class="fas fa-angle-double-left talks"></i>
+                                    <p class="text-muted lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis
+                                        officiis
+                                        facere nulla animi molestiae ea.</p>
+                                    <h3 class="mt-2">Mr.Jhon</h3>
+                                    <small class="text-muted mb-5">Businessman</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item mx-4">
+                        <div class=" d-flex align-items-center" style="width:500px; height:300px">
+                            <div class="row align-items-center border border-muted shadow">
+                                <div class="col-4">
+                                    <img src="https://thumbor.forbes.com/thumbor/500x500/smart/filters:format(jpeg)/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F60e4b46790162e20ea629559%2F416x416.jpg%3Fbackground%3D000000%26cropX1%3D0%26cropX2%3D1078%26cropY1%3D2%26cropY2%3D1080"
+                                        class="rounded-circle" width="150px" height="200px" alt="customer6" />
+                                </div>
+                                <div class="col-8">
+                                    <i class="fas fa-angle-double-left talks"></i>
+                                    <p class="text-muted lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis
+                                        officiis
+                                        facere nulla animi molestiae ea.</p>
+                                    <h3 class="mt-2">Mrs.Terway</h3>
+                                    <small class="text-muted mb-5">Businesswoman</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                
+
+                
+            </div>
+        </section>
+        <!-- End Feedback Section  -->
+
+        <!-- Start Booking Section  -->
+        <section>
+            <div class="container-fluid my-5">
+                <div class=" books">
+                    <div class="booking-content d-flex justify-content-center align-items-center">
+                        <div class="text-center text-light">
+                            <h3 class="display-3" >Ready to get started</h3>
+                            <p class="lead">Its's safe to book online with us! Get your dream stay in clicks or drop us a line with your questions.</p>
+                            <div class="text-uppercase ">
+                                <a href="#" class="btn btn-danger py-3 px-5 mx-3" data-bs-toggle="modal" data-bs-target="#modalbox">Book Now</a>
+                                <a href="#contact" class="btn btn-light py-3 px-5 mx-3">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Booking Section  -->
+
+        <!-- Start News Section  -->
+        <section id="blog" class="my-5">
+            <div class="container text-center">
+                <h3 class="display-2 ">Latest news from our blog</h3>
+                <p class="text-danger text-uppercase mb-5">News & Blog</p>
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 my-3" >
+                        <div class="card shadow-lg ">
+                            <img src="https://thumbs.dreamstime.com/b/young-woman-reading-book-beach-51374453.jpg" class="rounded-2 m-3" />
+                            <div class="card-body text-center">
+                                <h3 class="card-title my-3">Work Hard, Party Hard in a Luxury Chalet in the Alps</h3>
+                                <a href="#" class="text-danger text-decoration-none p-2">January 30, 2021</a>
+                                <a href="#" class="text-danger text-decoration-none p-2">Admin</a>
+                                <a href="#" class="text-danger text-decoration-none p-2"><i class="fas fa-message"></i> 3</a>
+                                <p class="text-muted my-2">
+                                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia
+                                    <a href="#" class="text-danger">See More</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12 my-3 ">
+                        <div class="card shadow-lg">
+                            <img src="https://abideinteriors.com.au/wp-content/uploads/2021/02/Iluka-Dining-Table-8-800x533.jpg" class="rounded-2 m-3" />
+                            <div class="card-body text-center">
+                                <h3 class="card-title my-3">Work Hard, Party Hard in a Luxury Chalet in the Alps</h3>
+                                <a href="#" class="text-danger text-decoration-none p-2">January 30, 2021</a>
+                                <a href="#" class="text-danger text-decoration-none p-2">Admin</a>
+                                <a href="#" class="text-danger text-decoration-none p-2"><i class="fas fa-message"></i> 3</a>
+                                <p class="text-muted my-2">
+                                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia
+                                    <a href="#" class="text-danger">See More</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <div class="col-lg-4 col-md-12 my-3">
+                        <div class="card shadow-lg">
+                            <img src="https://allaboardfamily.com/wp-content/uploads/2020/10/LD-Export-800x533.jpg" class="rounded-2 m-3" />
+                            <div class="card-body text-center">
+                                <h3 class="card-title my-3">Work Hard, Party Hard in a Luxury Chalet in the Alps</h3>
+                                <a href="#" class="text-danger text-decoration-none p-2">January 30, 2021</a>
+                                <a href="#" class="text-danger text-decoration-none p-2">Admin</a>
+                                <a href="#" class="text-danger text-decoration-none p-2"><i class="fas fa-message"></i> 3</a>
+                                <p class="text-muted my-2">
+                                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia
+                                    <a href="#" class="text-danger">See More</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End News Section  -->
+
+        <!-- Start Contact Section  -->
+        <section id="contact" class="py-5">
+            <div class="container">
+                <h3 class="display-2 text-center my-3">Contact Us</h3>
+                <div class="row">
+                    <div class="col-lg-6 col-12 mb-3" >
+                        <div class="maps">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3819.852675676528!2d96.165470514881!3d16.784003724343595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1ec8e1a174bcd%3A0xe46e95845dddb04c!2sThein%20Phyu%20Market%20Bus%20Stop!5e0!3m2!1sen!2smm!4v1661169677438!5m2!1sen!2smm"
+                                width="100%" height="100%" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12 bg-danger text-light text-center mb-3">
+                        <h3 class="display-3 my-3">Let's get in touch</h3>
+                        <p class="fs-4 m-4 lead">We're open for any suggestion or just to have a chat</p>
+                        <table class="m-auto text-start lead">
+                            <tr>
+                                <td class="cover"><span class="icons"><i class="fas fa-map-marker-alt fs-2"></i></span></td>
+                                <td>Address: 198 West 21th Street, Suite 721, Yangon</td>
+                            </tr>
+                            <tr >
+                                <td class="cover" ><span class="icons"><i class="fas fa-phone-alt fs-2"></i></span></td>
+                                <td>Phone: +95 9456 89702</td>
+                            </tr>
+                            <tr>
+                                <td class="cover" ><span class="icons"><i class="fas fa-envelope fs-2"></i></span></td>
+                                <td>Email: info@yoursite.com</td>
+                            </tr>
+                            <tr>
+                                <td class="cover" ><span class="icons"><i class="fas fa-globe-americas fs-2"></i></span></td>
+                                <td>Website: yoursite.com</td>
+                            </tr>
+                        </table>
+                        
+                    </div>
+                </div>
+
+                <div class="col-lg-8 col-12 m-auto mail-boxs">
+                    <h3 class="display-5 ">Get in touch</h3>
+                    <div class="form-group mx-5 my-2">
+                        <label for="name" class="labels">NAME</label>
+                        <input type="text" name="name" id="name" class="form-control inputs" placeholder="Enter Your Name" autocomplete="off"  />
+                        
+                    </div>
+                    <div class="form-group mx-5 my-3">
+                        <label for="email" class="labels">E-MAIL</label>
+                        <input type="email" name="email" id="email" class="form-control inputs" placeholder="Enter Your Email"
+                            autocomplete="off" />
+                        
+                    </div>
+                    <div class="form-group mx-5 my-3">
+                        <label for="subject" class="labels ">SUBJECT</label>
+                        <input type="text" name="subject" id="subject" class="form-control inputs" placeholder="Subject"
+                            autocomplete="off" />
+                        
+                    </div>
+                    <div class="form-group mx-5 my-3">
+                        <label for="message" class="labels">MESSAGE</label>
+                       <textarea name="message" id="message" class="form-control inputs" placeholder="Message"></textarea>
+                       
+                    </div>
+                    <div class=" ">
+                        <button type="submit" class="btn btn-outline-danger text-uppercase fw-bold rounded-0 m-5 py-2 px-5">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Contact Section  -->
+
+        <!-- Start Footer Section  -->
+        <footer class="bg-dark">
+           <div class="container">
+                <div class="row text-light uppers">
+                    <div class="col-lg-3 col-sm-6 my-3">
+                        <h3 class="display-6">Vacation Rental</h3>
+                        <p class="text-secondary">
+                            A small river named Duden flows by their place and supplies it with the necessary regelialia.
+                        </p>
+                        <a href="#" class="text-danger">Read more</a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 my-3">
+                        <h3 class="display-6">Services</h3>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white-50 text-decoration-none">Map Direction </a></li>
+                            <li><a href="#" class="text-white-50 text-decoration-none">Accomodation Services</a></li>
+                            <li><a href="#" class="text-white-50 text-decoration-none">Great Experience</a></li>
+                            <li><a href="#" class="text-white-50 text-decoration-none">Perfect central location</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 my-3">
+                        <h3 class="display-6">Tag cloud</h3>
+                        <a href="#" class="btn btn-outline-light text-uppercase m-1">Apartment</a>
+                        <a href="#" class="btn btn-outline-light text-uppercase m-1">Home</a>
+                        <a href="#" class="btn btn-outline-light text-uppercase m-1">Vacation</a>
+                        <a href="#" class="btn btn-outline-light text-uppercase m-1">Rental</a>
+                        <a href="#" class="btn btn-outline-light text-uppercase m-1">Rent</a>
+                        <a href="#" class="btn btn-outline-light text-uppercase m-1">House</a>
+                        <a href="#" class="btn btn-outline-light text-uppercase m-1">Place</a>
+                        <a href="#" class="btn btn-outline-light text-uppercase m-1">Drinks</a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 my-3">
+                        <h3 class="display-6">Subcribe</h3>
+                        <input type="email" class="email"  />
+                        <button class="btn btn-danger"><i class="fas fa-paper-plane text-light"></i></button>
+                        <h3 class="display-6 mt-3">Follow Us</h3>
+                        <a href="#" class="btn btn-outline-light"><i class="fab fa-twitter fs-5"></i></a>
+                        <a href="#" class="btn btn-outline-light"><i class="fab fa-facebook fs-5"></i></a>
+                        <a href="#" class="btn btn-outline-light"><i class="fab fa-instagram fs-5"></i></a>
+                    </div>
+                </div>
+           </div>
+           <div class="bg-black p-2">
+                <p class="text-secondary text-center my-auto">Copyright &copy;<span id="year"></span>; "Code Can Give You Better Life."</p>
+           </div>
+        </footer>
+        <!-- End Footer Section  -->
+
+
+
+
+
+        <!-- Boostrap css1 js1  -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+            integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+            crossorigin="anonymous"></script>
+
+
+        <!-- jquery js1  -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!-- light slider css1 js1  -->
+        <script src="./assets/libs/lightslider-master/dist/js/lightslider.min.js"></script>
+        <!-- flatpicker js1  -->
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="./js/app.js"></script>
+
+    </body>
+</html>
